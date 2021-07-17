@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= pageTitle %> </title>
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        <%- include('partials/nav.ejs', {csrfToken: csrfToken}) %>
+        <form action="/notes/postnote" method="POST">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title">
+            <br>
+            <textarea name="description" id="description"
+            rows="10" cols="50" placeholder="description"></textarea>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

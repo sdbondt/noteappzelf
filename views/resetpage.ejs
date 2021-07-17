@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= pageTitle %> </title>
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        <%- include('partials/nav.ejs', {csrfToken: csrfToken}) %>
+        <h3>Reset your password</h3>
+        <form method="POST" action="/resetpassword"> 
+            <label for="password">password</label>
+            <input type="password" id="password" name="password">
+            <input type="hidden" name="userId" value="<%= userId %>">
+            <input type="hidden" name="passwordToken" value="<%= passwordToken %>">
+            <button type="submit">Submit</button>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+        </form>
+    </body>
+</html>

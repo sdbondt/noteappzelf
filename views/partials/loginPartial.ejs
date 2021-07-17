@@ -1,0 +1,10 @@
+<form method="POST" action="/login">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email">
+    <label for="password">password</label>
+    <input type="password" id="password" name="password">
+    <button type="submit">Submit</button>
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+    <a href="/register" class="click-link">Not registered?</a>
+    <a href="/reset" class="click-link">Forgout your password?</a>
+</form>

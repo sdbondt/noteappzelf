@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= pageTitle %> </title>
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        <%- include('partials/nav.ejs', {csrfToken: csrfToken}) %>
+        <a href="/notes/allnotes?completed=yes" class="click-link">Show all completed notes</a>
+        <br>
+        <a href="/notes/allnotes?completed=no" class="click-link">Show all non completed notes</a>
+        <br>
+        <section>
+            <% if (currentPage !== 1 && previousPage !== 1) { %>
+                <a href="?page=1">1</a>
+            <% } %>
+            <% if (hasPreviousPage) { %>
+                <a href="?page=<%= previousPage %>"><%= previousPage %></a>
+            <% } %>
+            <a href="?page=<%= currentPage %>" class="active"><%= currentPage %></a>
+            <% if (hasNextPage) { %>
+                <a href="?page=<%= nextPage %>"><%= nextPage %></a>
+            <% } %>
+            <% if (lastPage !== currentPage && nextPage !== lastPage) { %>
+                <a href="?page=<%= lastPage %>"><%= lastPage %></a>
+            <% } %>
+        </section>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+        <ul>
+            <% notes.forEach(note => { %>
+                <li>
+                    <a href="/notes/<%= note._id %>" class="click-link"><%= note.title %></a>
+                    <%- include('partials/deletePartial.ejs', {csrfToken: csrfToken, note: note}) %>
+                </li>
+            <% }) %>
+        </ul>
+    </body>
+</html>

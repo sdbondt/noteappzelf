@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= pageTitle %> </title>
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        <h3><a class="click-link" href="/register">Register</a></h3>
+        <h3><a class="click-link" href="/login">Login</a></h3>
+        <h3><a class="click-link" href="/logout">Logout</a></h3>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+    </body>
+</html>

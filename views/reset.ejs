@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= pageTitle %> </title>
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        <%- include('partials/nav.ejs', {csrfToken: csrfToken}) %>
+        <h1>Reset your password.</h1>
+        <p>An email will be sent to your email address with a link to reset your password.</p>
+        <form method="POST" action="/reset">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

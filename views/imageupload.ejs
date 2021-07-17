@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= pageTitle %> </title>
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        <%- include('partials/nav.ejs', {csrfToken: csrfToken}) %>
+        <form action="/image" method="POST" enctype="multipart/form-data" >
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+            <label for="image">Upload your image</label>
+            <input type="file" name="image" id="image">
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

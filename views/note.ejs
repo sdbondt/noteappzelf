@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= pageTitle %> </title>
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        <%- include('partials/nav.ejs', {csrfToken: csrfToken}) %>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+        <h3><%= note.title %></h3>
+        <p><%= note.description %></p>
+        <% if (note.completed === false) { %>
+            <p>Status: not completed.</p> 
+            <form action="/notes/<%= note._id %>/completed" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                <button>Set as completed.</button>
+            </form>
+        <% } else { %>
+            <p>Status: completed.</p>
+            <form action="/notes/<%= note._id %>/completed" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                <button>Set as not completed.</button>
+            </form>
+        <% } %>
+        <%- include('partials/deletePartial.ejs', {csrfToken: csrfToken, note: note}) %>
+    </body>
+</html>

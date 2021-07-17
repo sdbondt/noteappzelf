@@ -1,0 +1,9 @@
+<nav>
+    <a href="/" class="click-link">Home</a>
+    <% if(!isLoggedIn) { %> 
+        <a href="/login" class="click-link" >Login</a>
+    <% } else { %>
+        <a href="/logout" class="click-link" >Logout</a>
+        <a href="/me" class="click-link" >Me</a>
+    <% } %>
+</nav>
