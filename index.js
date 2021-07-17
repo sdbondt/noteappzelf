@@ -7,8 +7,8 @@ const csrf = require('csurf');
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
 const csrfProtection = csrf({ cookie: true });
-const authRouter = require('../passportauth/routers/authrouters');
-const noteRouter = require('../passportauth/routers/noterouter');
+const authRouter = require('./routers/authRouters');
+const noteRouter = require('./routers/noteRouter');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
